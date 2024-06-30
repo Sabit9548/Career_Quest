@@ -5,13 +5,13 @@ import {
   updateJobType,
   deleteJobType
 } from '../controllers/jobTypeController.js';
-import authMiddleware from '../middleware/authMiddleware.js';
+import {isAuthenticated,isAdmin} from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/create', authMiddleware, createJobType);
-router.get('/', allJobsType);
-router.put('/:type_id', authMiddleware, updateJobType);
-router.delete('/:type_id', authMiddleware, deleteJobType);
+router.post('/create', isAuthenticated,isAdmin, createJobType);
+router.get('/type/jobs', allJobsType);
+router.put('/:type_id', isAuthenticated,isAdmin,updateJobType);
+router.delete('/:type_id', isAuthenticated,isAdmin, deleteJobType);
 
 export default router;

@@ -1,5 +1,4 @@
 import express from 'express';
-const router = express.Router();
 import {
   allUsers,
   singleUser,
@@ -7,8 +6,10 @@ import {
   deleteUser,
   createUserJobsHistory
 } from '../controllers/userController.js';
-import isAuthenticated from '../middleware/authMiddleware.js';
-import isAdmin from '../middleware/adminMiddleware.js';
+import {isAuthenticated,isAdmin} from '../middleware/authMiddleware.js';
+
+
+const router = express.Router();
 
 // User routes
 

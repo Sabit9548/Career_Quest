@@ -6,14 +6,23 @@ import {
   deleteJob,
   showJobs
 } from '../controllers/jobsController.js';
-import authMiddleware from '../middleware/authMiddleware.js';
+import {isAuthenticated,isAdmin} from '../middleware/authMiddleware.js';
+
+
 
 const router = express.Router();
 
-router.post('/create', authMiddleware, createJob);
-router.get('/:id', singleJob);
-router.put('/:job_id', authMiddleware, updateJob);
-router.delete('/:job_id', authMiddleware, deleteJob);
-router.get('/', showJobs);
+// Jobs routes
+
+// /api/job/create
+router.post('/type/jobs', isAuthenticated, createJob);
+// /api/job/id
+router.get('/job/:id', singleJob);
+// /api/job/update/job_id
+router.put('/job/update/:job_id', isAuthenticated, updateJob);
+// /api/job/delete/job_id
+router.delete('/job/delete/:job_id', isAuthenticated, isAdmin, deleteJob);
+// /api/jobs/show
+router.get('/jobs/show', showJobs);
 
 export default router;
