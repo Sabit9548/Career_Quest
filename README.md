@@ -72,6 +72,7 @@ career-quest/
 │   ├── package-lock.json
 │   └── package.json
 
+
 #Instructions:
 1.Replace https://github.com/your-username/career-quest.git with the actual URL of your repository.
 2.Update JWT_SECRET=your_jwt_secret with your actual JWT secret.
